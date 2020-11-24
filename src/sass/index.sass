@@ -1,0 +1,25 @@
+.canvas-wrapper
+  background: rgba(240, 40, 140)
+  height: 100vh
+  left: 0
+  position: fixed
+  top: 0
+  width: 100vw
+
+.layout-artwork
+  background: white
+  display: flex
+  min-height: 100vh
+  position: fixed
+  right: 0
+  top: 0
+  width: 50vw
+  z-index: +1
+  flex-direction: column
+  padding: 60px
+  transition: transform 0.5s ease
+  box-shadow: 0 0 120px rgba(0, 0, 0, 0.1)
+  &.hidden
+    transform: translateX(100vw)
+  &.visible
+    transform: translateX(0)
