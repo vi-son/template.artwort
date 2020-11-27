@@ -8,18 +8,26 @@
 
 .layout-artwork
   background: white
-  display: flex
+  display: grid
+  grid-template-columns: 1fr
   min-height: 100vh
-  position: fixed
+  height: auto
+  position: absolute
   right: 0
   top: 0
   width: 50vw
+  max-width: 50vw
   z-index: +1
   flex-direction: column
   padding: 60px
   transition: transform 0.5s ease
   box-shadow: 0 0 120px rgba(0, 0, 0, 0.1)
+  overflow-y: scroll
+  overflow-x: hidden
   &.hidden
     transform: translateX(100vw)
   &.visible
     transform: translateX(0)
+
+  *
+    max-width: 100%
