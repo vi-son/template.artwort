@@ -1,3 +1,35 @@
+$font-root: "@vi-son/rouge/fonts"
+
+/* 1. Settings - variables, config-switches
+@import @vi-son/rouge/1-settings/_colors.sass
+@import @vi-son/rouge/1-settings/_fonts.sass
+@import @vi-son/rouge/1-settings/_variables.sass
+@import @vi-son/rouge/1-settings/_breakpoints.sass
+@import @vi-son/rouge/1-settings/_typograhpy.sass
+
+/*** 2. Tools - mixins and functions
+@import @vi-son/rouge/2-tools/_responsive-font-size.sass
+@import @vi-son/rouge/2-tools/_media-queries.sass
+
+/* 3. Generic - ground-zero styling (normalize, reset)
+@import @vi-son/rouge/3-generic/_reset.sass
+
+/* 4. Base - unclassed HTML element styles
+@import @vi-son/rouge/4-base/_button.sass
+@import @vi-son/rouge/4-base/_document.sass
+@import @vi-son/rouge/4-base/_headings.sass
+@import @vi-son/rouge/4-base/_images.sass
+@import @vi-son/rouge/4-base/_input.range.sass
+@import @vi-son/rouge/4-base/_input.text.sass
+@import @vi-son/rouge/4-base/_input.text.sass
+@import @vi-son/rouge/4-base/_links.sass
+@import @vi-son/rouge/4-base/_text.sass
+
+/* 5. Objects - cosmetic-free design patterns
+@import @vi-son/rouge/5-objects/_button.send.sass
+@import @vi-son/rouge/5-objects/_btn.sass
+@import @vi-son/rouge/5-objects/_emoji.sass
+
 .canvas-wrapper
   background: rgba(240, 40, 140)
   height: 100vh
@@ -5,6 +37,40 @@
   position: fixed
   top: 0
   width: 100vw
+  .btn-details
+    position: fixed
+    right: 60px
+    bottom: 60px
+    border-radius: 60px
+    width: 100px
+    height: 100px
+    display: flex
+    justify-content: center
+    align-items: center
+    padding: 0
+    transition: background 1s ease
+    &:hover
+      background: var(--color-curacao)
+
+
+.btn-close-details
+  position: fixed
+  top: 20px
+  left: calc(30vw - 70px)
+  width: 100px
+  height: 100px
+  display: flex
+  justify-content: center
+  align-items: center
+  border-radius: 100px
+  background: var(--color-darkness)
+  z-index: 999
+  transition: transform 0.2s 0.3s ease
+  &.visible
+    transform: 0
+  &.hidden
+    transition: transform 0.3s ease
+    transform: translateY(-50vh)
 
 .layout-artwork
   background: white
@@ -15,17 +81,17 @@
   position: absolute
   right: 0
   top: 0
-  width: 50vw
-  max-width: 50vw
+  width: 70vw
+  max-width: 70vw
   z-index: +1
   flex-direction: column
-  padding: 60px
+  padding: 120px
   transition: transform 0.5s ease
   box-shadow: 0 0 120px rgba(0, 0, 0, 0.1)
   overflow-y: scroll
-  overflow-x: hidden
   &.hidden
     transform: translateX(100vw)
+    transition: transform 1s 0.1s ease
   &.visible
     transform: translateX(0)
 
