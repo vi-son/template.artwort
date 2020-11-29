@@ -20,6 +20,9 @@ const Artwork = () => {
   const [content, setContent] = useState({});
 
   useEffect(() => {
+    console.group("Version");
+    console.log(process.env.VERSION);
+    console.groupEnd();
     get(`/pages/audiovis-io`).then(d => {
       setContent(d.content);
       console.log(d.content);
@@ -53,7 +56,7 @@ const Artwork = () => {
         )}
       >
         <h1>{content.title}</h1>
-        <artticle>{content.shortdesription}</artticle>
+        <article>{content.shortdesription}</article>
         {content.blocks ? (
           content.blocks.map(block => {
             switch (block._key) {
@@ -92,6 +95,23 @@ const Artwork = () => {
         ) : (
           <></>
         )}
+
+        <footer className="footer">
+          <div className="version">
+            <span>
+              <b>Version: </b> {process.env.VERSION.tag}
+            </span>
+            <span>
+              <b>Commit: </b> {process.env.VERSION.commit}
+            </span>
+            <span>
+              <b>Bugs/Code: </b>
+              <a href={process.env.VERSION.package.bugs.url} target="_blank">
+                {process.env.VERSION.package.name}
+              </a>
+            </span>
+          </div>
+        </footer>
       </div>
     </>
   );
