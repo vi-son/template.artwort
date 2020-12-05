@@ -4,7 +4,7 @@ import { kt } from "../../utils/kirbytext.js";
 
 const HyperlinkBlock = ({ content }) => {
   return (
-    <section className="block-hyperlinks">
+    <section className="block hyperlinks">
       <div className="flex">
         {content.links.map(l => {
           return (

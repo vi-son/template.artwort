@@ -2,21 +2,13 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 // Local imports
 import { get } from "./api.js";
-import TextBlock from "./blocks/TextBlock.js";
-import ImageBlock from "./blocks/ImageBlock.js";
-import ImageGridBlock from "./blocks/ImageGridBlock.js";
-import AudioBlock from "./blocks/AudioBlock.js";
-import ReferencesBlock from "./blocks/ReferencesBlock.js";
-import VideoEmedBlock from "./blocks/VideoEmbedBlock.js";
-import HyperlinkBlock from "./blocks/CiteBlock.js";
-import CiteBlock from "./blocks/CiteBlock.js";
-import PodcastBlock from "./blocks/PodcastBlock.js";
+import Narrative from "./components/Narrative.js";
 
 // Style imports
 import "../sass/index.sass";
 
 const Artwork = () => {
-  const [showDetails, setShowDetails] = useState(false);
+  const [showNarrative, setShowNarrative] = useState(false);
   const [content, setContent] = useState({});
 
   useEffect(() => {
@@ -25,7 +17,6 @@ const Artwork = () => {
     console.groupEnd();
     get(`/pages/audiovis-io`).then(d => {
       setContent(d.content);
-      console.log(d.content);
     });
   }, []);
 
@@ -35,7 +26,7 @@ const Artwork = () => {
         <canvas />
         <button
           className="emoji btn-details"
-          onClick={() => setShowDetails(!showDetails)}
+          onClick={() => setShowNarrative(!showNarrative)}
         >
           📖
         </button>
@@ -44,75 +35,17 @@ const Artwork = () => {
         className={[
           "btn-close-details",
           "emoji",
-          showDetails ? "visible" : "hidden"
+          showNarrative ? "visible" : "hidden"
         ].join(" ")}
-        onClick={() => setShowDetails(false)}
+        onClick={() => setShowNarrative(false)}
       >
-        👈
-      </button>
-      <div
-        className={["layout-artwork", showDetails ? "visible" : "hidden"].join(
-          " "
-        )}
-      >
-        <h1>{content.title}</h1>
-        <article>{content.shortdesription}</article>
-        {content.blocks ? (
-          content.blocks.map(block => {
-            switch (block._key) {
-              case "textblock":
-                return <TextBlock key={block._uid} content={block} />;
-                break;
-              case "imageblock":
-                return <ImageBlock key={block._uid} content={block} />;
-                break;
-              case "imagegrid":
-                return <ImageGridBlock key={block._uid} content={block} />;
-                break;
-              case "audioblock":
-                return <AudioBlock key={block._uid} content={block} />;
-                break;
-              case "references":
-                return <ReferencesBlock key={block._uid} content={block} />;
-                break;
-              case "videoembed":
-                return <VideoEmedBlock key={block._uid} content={block} />;
-                break;
-              case "hyperlinks":
-                return <HyperlinkBlock key={block._uid} content={block} />;
-                break;
-              case "citeblock":
-                return <CiteBlock key={block._uid} content={block} />;
-                break;
-              case "podcastblock":
-                return <PodcastBlock key={block._uid} content={block} />;
-                break;
-              default:
-                return <section key={block._uid}>{block._key}</section>;
-                break;
-            }
-          })
+        {window.matchMedia("(max-width: 768px)").matches ? (
+          <span>👆</span>
         ) : (
-          <></>
+          <span>👈</span>
         )}
-
-        <footer className="footer">
-          <div className="version">
-            <span>
-              <b>Version: </b> {process.env.VERSION.tag}
-            </span>
-            <span>
-              <b>Commit: </b> {process.env.VERSION.commit}
-            </span>
-            <span>
-              <b>Bugs/Code: </b>
-              <a href={process.env.VERSION.package.bugs.url} target="_blank">
-                {process.env.VERSION.package.name}
-              </a>
-            </span>
-          </div>
-        </footer>
-      </div>
+      </button>
+      <Narrative show={showNarrative} content={content} />
     </>
   );
 };

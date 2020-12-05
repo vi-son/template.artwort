@@ -4,7 +4,7 @@ import { kt } from "../utils/kirbytext.js";
 
 const VideoEmedBlock = ({ content }) => {
   return (
-    <section className="block-video-embed">
+    <section className="block video-embed">
       <div className="grid">
         <div className="iframe-wrapper">
           <iframe

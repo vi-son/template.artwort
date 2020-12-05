@@ -38,7 +38,9 @@ module.exports = env => {
     },
     resolve: {
       extensions: [".js"],
-      alias: {}
+      alias: {
+        "@sass": path.join(__dirname, "src/sass/")
+      }
     },
     optimization: {
       splitChunks: {
