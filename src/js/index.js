@@ -30,6 +30,10 @@ const Artwork = () => {
           setShowNarrative={setShowNarrative}
         />
       </div>
+      <button className="btn-to-exhibition">
+        <span className="emoji">🏰</span>
+        <span className="description">Zum Foyer</span>
+      </button>
       <ButtonCloseNarrative
         showNarrative={showNarrative}
         setShowNarrative={setShowNarrative}
