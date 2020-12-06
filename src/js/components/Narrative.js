@@ -6,7 +6,7 @@ import ImageGridBlock from "../blocks/ImageGridBlock.js";
 import AudioBlock from "../blocks/AudioBlock.js";
 import ReferencesBlock from "../blocks/ReferencesBlock.js";
 import VideoEmedBlock from "../blocks/VideoEmbedBlock.js";
-import HyperlinkBlock from "../blocks/CiteBlock.js";
+import HyperlinkBlock from "../blocks/HyperlinkBlock.js";
 import CiteBlock from "../blocks/CiteBlock.js";
 import PodcastBlock from "../blocks/PodcastBlock.js";
 // Style imports
@@ -39,12 +39,12 @@ const Narrative = ({ show, content }) => {
                   return <ReferencesBlock key={block._uid} content={block} />;
                 case "videoembed":
                   return <VideoEmedBlock key={block._uid} content={block} />;
-                /*   case "hyperlinks": */
-                /*     return <HyperlinkBlock key={block._uid} content={block} />; */
-                /*   case "citeblock": */
-                /*     return <CiteBlock key={block._uid} content={block} />; */
-                /*   case "podcastblock": */
-                /*     return <PodcastBlock key={block._uid} content={block} />; */
+                case "hyperlinks":
+                  return <HyperlinkBlock key={block._uid} content={block} />;
+                case "citeblock":
+                  return <CiteBlock key={block._uid} content={block} />;
+                case "podcastblock":
+                  return <PodcastBlock key={block._uid} content={block} />;
                 default:
                   return <></>;
               }
@@ -56,6 +56,9 @@ const Narrative = ({ show, content }) => {
 
         <footer className="footer">
           <div className="version">
+            <span>
+              <b>{content.title}</b>
+            </span>
             <span>
               <b>Version: </b> {process.env.VERSION.tag}
             </span>

@@ -1,6 +1,6 @@
 import React from "react";
-
-import { kt } from "../../utils/kirbytext.js";
+// Local imports
+import { kt } from "../utils/kirbytext.js";
 
 const HyperlinkBlock = ({ content }) => {
   return (
@@ -9,7 +9,11 @@ const HyperlinkBlock = ({ content }) => {
         {content.links.map(l => {
           return (
             <a key={l.link} href={l.link} className="link" target="_blank">
-              {l.text}
+              <h3 className="heading">externer link:</h3>
+              <div className="hyperlink">
+                <span className="emoji">🔗</span>
+                <span className="linktext">{l.text}</span>
+              </div>
             </a>
           );
         })}

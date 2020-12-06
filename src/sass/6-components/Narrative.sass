@@ -52,6 +52,8 @@ $padding-s: 30px
   
   .content
     padding: $padding-l
+    display: flex
+    flex-direction: column
     +until($tablets)
       padding: $padding-s
 
@@ -60,7 +62,7 @@ $padding-s: 30px
     padding: $padding-l
     margin-top: 80px
     line-height: 1.4
-    opacity: 0.3
+    opacity: 0.6
     +until($tablets)
       padding: $padding-s
     span

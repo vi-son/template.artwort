@@ -11,6 +11,9 @@
 .block
   &.cite
     margin: 50px 0
+    max-width: 90%
+    width: 90%
+    align-self: end
     .link
       display: flex
       flex-direction: column
@@ -23,7 +26,7 @@
           box-shadow: 0 50px 80px var(--color-curacao-40)
       .cite-text
         transition: background 0.3s ease, color 0.3s ease, padding 0.3s ease
-        border-left: 10px solid var(--color-curacao)
+        border-left: 5px solid var(--color-curacao)
         color: var(--color-curacao)
         text-align: left
         padding-left: 20px
@@ -154,30 +157,53 @@
       +until($tablets)
         padding: 20px 10px
 
-/* .block-hyperlinks
-/*   margin: 30px 0 !important
-/*   .flex
-/*     display: flex
-/*     flex-direction: column
-/*   .link
-/*     background: var(--color-darkness)
-/*     display: inline-table
-/*     color: var(--color-snow)
-/*     margin-bottom: 5px
-/*     padding: 0 10px
-/*     &:hover
-/*       background: var(--color-curacao)
+
+.block
+  &.hyperlinks
+    margin: 10px 0 !important
+    max-width: 90%
+    width: 90%
+    align-self: end
+    .flex
+      display: flex
+      flex-direction: column
+    .link
+      display: inline-table
+      color: var(--color-curacao)
+      margin-bottom: 5px
+      padding: 20px 20px
+      transition: background 250ms ease, color 250ms ease
+      display: flex
+      align-items: center
+      flex-direction: column
+      justify-content: flex-start
+      align-items: flex-start
+      border-left: 5px solid var(--color-curacao)
+      .heading
+        font-size: 1.25rem
+        margin-bottom: 20px
+      .hyperlink
+        display: flex
+        flex-direction: row
+        .emoji
+          margin-right: 20px
+        .linktext
+          text-align: left
+          line-height: 1.7
+        &:hover
+          color: var(--color-darkness)
 
 
-/* .block-podcast
-/*   width: 100%
-/*   height: auto
-/*   display: inline-flex
-/*   box-shadow: 0 50px 80px var(--color-litte-peacock-40)
-/*   overflow: hidden
-/*   border-radius: 4px
-/*   background: var(--color-litte-peacock)
-/*   iframe
-/*     margin-bottom: -10px
-/*   .player
-/*     width: 100%
+.block
+  &.podcast
+    width: 100%
+    height: auto
+    display: inline-flex
+    box-shadow: 0 50px 80px var(--color-litte-peacock-40)
+    overflow: hidden
+    border-radius: 4px
+    background: var(--color-litte-peacock)
+    iframe
+      margin-bottom: -10px
+    .player
+      width: 100%

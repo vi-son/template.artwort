@@ -3,7 +3,8 @@ import ReactDOM from "react-dom";
 // Local imports
 import { get } from "./api.js";
 import Narrative from "./components/Narrative.js";
-
+import ButtonCloseNarrative from "./components/ButtonCloseNarrative.js";
+import ButtonOpenNarrative from "./components/ButtonOpenNarrative.js";
 // Style imports
 import "../sass/index.sass";
 
@@ -24,27 +25,15 @@ const Artwork = () => {
     <>
       <div className="canvas-wrapper">
         <canvas />
-        <button
-          className="emoji btn-details"
-          onClick={() => setShowNarrative(!showNarrative)}
-        >
-          📖
-        </button>
+        <ButtonOpenNarrative
+          showNarrative={showNarrative}
+          setShowNarrative={setShowNarrative}
+        />
       </div>
-      <button
-        className={[
-          "btn-close-details",
-          "emoji",
-          showNarrative ? "visible" : "hidden"
-        ].join(" ")}
-        onClick={() => setShowNarrative(false)}
-      >
-        {window.matchMedia("(max-width: 768px)").matches ? (
-          <span>👆</span>
-        ) : (
-          <span>👈</span>
-        )}
-      </button>
+      <ButtonCloseNarrative
+        showNarrative={showNarrative}
+        setShowNarrative={setShowNarrative}
+      />
       <Narrative show={showNarrative} content={content} />
     </>
   );
