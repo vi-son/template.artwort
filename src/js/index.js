@@ -5,6 +5,7 @@ import { get } from "./api.js";
 import Narrative from "./components/Narrative.js";
 import ButtonCloseNarrative from "./components/ButtonCloseNarrative.js";
 import ButtonOpenNarrative from "./components/ButtonOpenNarrative.js";
+import ButtonToExhibition from "./components/ButtonToExhibition.js";
 // Style imports
 import "../sass/index.sass";
 
@@ -30,10 +31,7 @@ const Artwork = () => {
           setShowNarrative={setShowNarrative}
         />
       </div>
-      <button className="btn-to-exhibition">
-        <span className="emoji">🏰</span>
-        <span className="description">Zum Foyer</span>
-      </button>
+      <ButtonToExhibition />
       <ButtonCloseNarrative
         showNarrative={showNarrative}
         setShowNarrative={setShowNarrative}

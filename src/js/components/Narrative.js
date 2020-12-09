@@ -25,7 +25,6 @@ const Narrative = ({ show, content }) => {
         <div className="content">
           {content.blocks ? (
             content.blocks.map(block => {
-              console.log(block._key);
               switch (block._key) {
                 case "textblock":
                   return <TextBlock key={block._uid} content={block} />;
