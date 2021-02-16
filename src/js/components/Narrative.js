@@ -24,7 +24,7 @@ const Narrative = ({ show, content }) => {
         </div>
         <div className="content">
           {content.blocks ? (
-            content.blocks.map(block => {
+            content.blocks.map((block) => {
               switch (block._key) {
                 case "textblock":
                   return <TextBlock key={block._uid} content={block} />;

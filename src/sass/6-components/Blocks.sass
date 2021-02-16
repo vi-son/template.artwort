@@ -1,43 +1,50 @@
+
 @import @vi.son/rouge/1-settings/_breakpoints.sass
 @import @vi.son/rouge/2-tools/_media-queries.sass
 
+$padding-l: 120px
+$padding-s: 20px
+
 .block
-  margin: 50px 0
+  margin: $padding-s 0
 
 .block
   &.cite
-    margin: 50px 0
-    max-width: 90%
-    width: 90%
     align-self: end
+    padding-right: $padding-s
+    +from($tablets)
+      padding-right: $padding-l
     .link
       display: flex
       flex-direction: column
       padding: 0
       &:hover
         .cite-text
-          background-color: var(--color-curacao)
-          color: var(--color-snow)
-          border-radius: 5px
-          box-shadow: 0 50px 80px var(--color-curacao-40)
+          color: var(--color-curacao-40)
       .cite-text
         transition: background 0.3s ease, color 0.3s ease, padding 0.3s ease
-        border-left: 5px solid var(--color-curacao)
+        border-left: 10px solid var(--color-curacao)
         color: var(--color-curacao)
         text-align: left
-        padding-left: 20px
+        padding-left: $padding-s - 10px
         line-height: 1.6
-        padding: 30px
+        font-size: 0.9rem
+        +from($tablets)
+          padding-left: $padding-l - 10px
       .author
         margin-top: 20px
-        text-align: right
-        font-size: 1.375rem
-        margin-left: 20px
-        color: var(--color-darkness)
+        text-align: left
+        padding-left: $padding-s
+        color: var(--color-curacao)
+        +from($tablets)
+          padding-left: $padding-l
 
   &.text
+    padding: 0 $padding-s
+    +from($tablets)
+      padding: 0 $padding-l
     .preheading
-      font-size: 1.75rem
+      font-size: 2.0rem
       line-height: 1.0
       color: var(--color-curacao)
       margin: 0
@@ -45,81 +52,86 @@
     .heading
       margin: 0
       color: var(--color-darkness) 
-      font-size: 2.8125rem
+      font-size: 2.5rem
       line-height: 1.0
-      margin-top: 20px
+      margin: 10px 0
 
 
 .block
   &.image
-    margin: 120px 0
-    display: grid
+    margin: $padding-s 0
+    padding: 0 $padding-s
     justify-content: center
-    grid-template-columns: 60% 40%
-    align-items: flex-start
-    +until($tablets)
-      grid-template-columns: 1fr
-    .left-side
-      padding: 0 20px 0 0
-      margin-bottom: 20px
-      a:hover
-        img
-          box-shadow: 0 60px 120px rgba(0, 0, 0, 0.3)
-      img
-        transition: box-shadow 0.3s ease
-        width: 100%
-        margin: 0
-        box-shadow: 0 30px 90px rgba(0, 0, 0, 0.1)
-        border: 10px solid white
-    .right-side
-      align-self: end
-      font-size: 0.9rem
-      line-height: 1.2
-      background: white
-      padding: 30px
-      border-radius: 2px
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1)
+    +from($tablets)
+      padding: 0 $padding-l
+      margin: $padding-l 0
+    .description
+      line-height: 1.8
+      font-style: italic
+      display: flex
+      width: 50%
+    .picture
+      display: flex
+      justify-content: center
+      .image
+        border-radius: 5px
+        transition: opacity 500ms ease
+        box-shadow: 0 20px 30px var(--color-ultradark-5)
+        &:hover
+          opacity: 0.7
 
       
 .block
   &.imagegrid
-    margin: 120px 0
-    width: 100%
     display: grid
     grid-template-columns: repeat(2, 1fr)
-    grid-gap: 5px
-    +until($tablets)
-      grid-template-columns: 1fr
-    a:hover
-      img
-        box-shadow: 0 60px 120px rgba(0, 0, 0, 0.3)
-    img
+    grid-gap: $padding-s / 2
+    padding: 0
+    +from($tablets)
+      grid-gap: $padding-s
+      padding: 0 $padding-l / 2
+      grid-template-columns: repeat(2, 1fr)
+    .clickable-image
+      margin: 0
+      padding: 0
+    .image
       transition: box-shadow 0.3s ease
       width: 100%
-      margin: auto 0
-      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.1)
       border-radius: 2px
-      border: 10px solid white
+      margin: 0
+      &:hover
+        opacity: 0.7
 
 .block
   &.references
+    margin-top: $padding-l
+    padding: 0 $padding-s
+    +from($tablets)
+      margin-top: $padding-l
+      padding: 0 $padding-l
     .heading
       margin-bottom: 40px
-    .reference
-      display: flex
-      line-height: 1.4
-      margin-bottom: 20px
-      font-size: 0.85rem
-      .number
-        color: var(--color-curacao)
-        font-size: 0.75rem
-        position: relative
-        top: -5px
-        margin-right: 10px
+      font-size: 2rem
+    .reference-list
+      display: grid
+      grid-template-columns: 1fr
+      +from($tablets)
+        grid-column-gap: $padding-l
+        grid-template-columns: 1fr 1fr
+      .reference
+        display: flex
+        line-height: 1.2
+        margin-bottom: 20px
+        font-size: 0.85rem
+        .number
+          color: var(--color-curacao)
+          font-size: 0.75rem
+          position: relative
+          top: -5px
+          margin-right: 10px
 
 .block
   &.video-embed
-    margin: 120px 0
     .grid
       width: 90%
       +until($tablets)
@@ -142,24 +154,18 @@
         position: absolute
     .description
       text-align: center
-      width: 100%
       position: relative
       top: -30px
-      background: white
       padding: 40px 20px
       margin: 0 auto
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2)
-      line-height: 1.2
-      +until($tablets)
-        padding: 20px 10px
+      line-height: 1.4
 
 
 .block
   &.hyperlinks
-    margin: 10px 0 !important
-    max-width: 90%
-    width: 90%
-    align-self: end
+    padding: 0 $padding-s
+    +from($tablets)
+      padding: 0 $padding-l
     .flex
       display: flex
       flex-direction: column
@@ -174,7 +180,6 @@
       flex-direction: column
       justify-content: flex-start
       align-items: flex-start
-      border-left: 5px solid var(--color-curacao)
       .heading
         font-size: 1.25rem
         margin-bottom: 20px

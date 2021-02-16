@@ -9,9 +9,9 @@ const CiteBlock = ({ content }) => {
         <blockquote className="cite-text" cite={content.link}>
           {content.cite !== undefined ? kt(content.cite) : ""}
         </blockquote>
-        <h2 className="author">
+        <span className="author">
           {content.author !== undefined ? content.author : ""}
-        </h2>
+        </span>
       </a>
     </section>
   );

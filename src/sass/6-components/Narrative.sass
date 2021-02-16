@@ -15,7 +15,7 @@ $padding-s: 30px
   box-shadow: 0 0 120px rgba(0, 0, 0, 0.1)
   min-height: 100vh
   .scroll-wrapper
-    background: white
+    background: var(--color-snow)
     position: absolute
     display: grid
     grid-template-columns: 1fr
@@ -44,6 +44,7 @@ $padding-s: 30px
   .header
     border-bottom: 1px solid var(--color-dirtysnow)
     padding: $padding-l
+    margin-bottom: $padding-l
     *
       color: var(--color-curacao)
     +until($tablets)
@@ -51,11 +52,9 @@ $padding-s: 30px
       padding-top: $padding-s * 4
   
   .content
-    padding: $padding-l
     display: flex
     flex-direction: column
-    +until($tablets)
-      padding: $padding-s
+    max-width: 100vw
 
   .footer
     border-top: 1px solid var(--color-dirtysnow)

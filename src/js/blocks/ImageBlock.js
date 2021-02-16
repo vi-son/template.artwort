@@ -6,15 +6,15 @@ const ImageBlock = ({ content }) => {
   const imageUrl = content.image.length > 0 ? `${content.image[0].url}` : "";
   return (
     <section className="block image">
-      <div className="left-side">
-        <a href={imageUrl} target="_blank">
-          <img src={imageUrl} />
+      <div className="picture">
+        <a href={imageUrl} target="_blank" className="clickable-image">
+          <img src={imageUrl} className="image" />
         </a>
       </div>
       {content.text !== undefined ? (
-        <small className="right-side">{kt(content.text)}</small>
+        <small className="description">{kt(content.text)}</small>
       ) : (
-        ""
+        <></>
       )}
     </section>
   );
