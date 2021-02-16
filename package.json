@@ -46,10 +46,7 @@
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.11.0",
-    "workbox-webpack-plugin": "^5.1.4"
-  },
-  "dependencies": {
-    "@vi-son/rouge": "file:../rouge",
+    "workbox-webpack-plugin": "^5.1.4",
     "@vi.son/rouge": "^1.0.3"
   }
 }
